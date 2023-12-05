@@ -17,14 +17,14 @@ pipeline {
                 sh 'terraform validate'
             }
         }
-        stage('terraform apply') {
-            steps {
-                sh 'terraform apply'
-            }
-        }
         stage('terraform plan') {
             steps {
                 sh 'terraform plan'
+            }
+        }
+        stage('terraform apply --auto -aprove') {
+            steps {
+                sh 'terraform apply'
             }
         }
         stage('terraform destroy') {
