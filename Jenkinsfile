@@ -22,16 +22,16 @@ pipeline {
                 sh 'terraform plan'
             }
         }
-        stage('terraform apply --auto-approve') {
+        /* stage('terraform apply --auto-approve') {
             steps {
                 sh 'terraform apply --auto-approve'
             }
-        }
-        /* stage('terraform destroy --auto-approve') {
+        } */
+        stage('terraform destroy --auto-approve') {
             steps {
                 sh 'terraform destroy --auto-approve'
             }
-        } */
+        }
         
     }
 }
