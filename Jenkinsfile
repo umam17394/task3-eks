@@ -2,9 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('github clone') {
+        stage('aws cred') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/umam17394/devops-eks.git']])  
+               withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: "aws-cred",
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                    sh 'aws ec2 describe-instance'
+                }
             }
         }
         stage('terraform init') {
