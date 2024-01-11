@@ -7,21 +7,21 @@ pipeline {
                 sh 'terraform init'
             }
         }
-        stage('terraform validate') {
+        /*stage('terraform validate') {
             steps {
                 sh 'terraform validate'
             }
-        }
-        stage('terraform plan') {
+        } */
+        /*stage('terraform plan') {
             steps {
                 sh 'terraform plan'
             }
-        }
-        stage('terraform apply') {
+        } */
+        /*stage('terraform apply') {
             steps {
                 sh 'terraform apply --auto-approve'
             }
-        }
+        } */
         stage('terraform destroy') {
             steps {
                 sh 'terraform destroy --auto-approve'
